@@ -1,47 +1,39 @@
+// multilevelInheritance
+
 #include<iostream>
 using namespace std;
 
-// Base class
-class Vehicle {
+// Base class 
+class LivingBeing {
 public:
-    string brand;
+  void breathe() {
+    cout << "Breathing..." << endl;
+  }
+};
 
-    void startEngine() {
-        cout << brand << " engine started." << endl;
+// Derived from LivingBeing
+class Human : public LivingBeing {
+public:
+  void speak() {
+    cout << "Speaking..." << endl;
     }
 };
 
-// Derived class from Vehicle
-class Car : public Vehicle {
+
+// Derived from human
+class Student : public Human {
 public:
-    string model;
-
-    void drive() {
-        cout << "Driving " << brand << " " << model << endl;
-    }
-};
-
-// Derived class from Car
-class ElectricCar : public Car {
-public:
-    int batteryLife;
-
-    void chargeBattery() {
-        cout << "Charging " << brand << " " << model << ". Battery: " << batteryLife << "%\n";
-    }
+  void study() {
+    cout << "Studying..." << endl;
+  }
 };
 
 int main() {
-    ElectricCar tesla;
-
-    tesla.brand = "Tesla";
-    tesla.model = "Model S";
-    tesla.batteryLife = 85;
-
-    tesla.startEngine();     // from Vehicle
-    tesla.drive();           // from Car
-    tesla.chargeBattery();   // from ElectricCar
-
-    return 0;
+  Student s1;
+  
+  s1.breathe();
+  s1.speak();
+  s1.study();
+  
+  return 0;
 }
-
